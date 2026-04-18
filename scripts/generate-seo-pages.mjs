@@ -27,60 +27,75 @@ const distDir = path.join(repoRoot, 'dist')
 /**
  * 与 `src/App.tsx` 路由保持一致：新增页面时记得同步更新此表。
  * 文案默认偏中文 SEO（你也可以改成双语或从 CMS 生成）。
+ * `keywords`：写入 `<meta name="keywords">`，便于部分搜索引擎与站内检索；请与各路由业务词保持一致。
  */
 const SEO_PAGES = [
   {
     path: '/',
     /** 相对 dist 的输出目录：[] 表示根目录的 `index.html` */
     outDir: [],
-    title: '隐私媒体套件｜PDF / 图片 / Word 本地处理工具',
+    title: '隐私媒体套件｜PDF合并 PDF转Word 图片压缩 本地在线工具',
     description:
-      '隐私优先：PDF 合并、图片压缩、PDF 转 Word、Word 转 PDF、PDF 转图片、图片转 PDF 等工具在浏览器本地处理，默认不上传服务器。适合静态托管与 Cloudflare Pages。',
+      '隐私优先的 PDF 与图片工具站：支持 PDF 合并、PDF 转 Word（docx）、Word 转 PDF、PDF 转 PNG/JPEG、图片转 PDF、图片压缩等，文件在浏览器本地处理不上传服务器，适合 Cloudflare Pages 静态部署与百度搜索「在线 PDF 工具」类需求。',
+    keywords:
+      'PDF工具,在线PDF,PDF合并,PDF转Word,Word转PDF,PDF转图片,图片转PDF,图片压缩,JPG压缩,PNG压缩,本地处理,隐私,免费,浏览器工具,docx,Privacy Media Suite',
   },
   {
     path: '/privacy',
     outDir: ['privacy'],
-    title: '隐私说明｜隐私媒体套件',
-    description: '说明本地处理范围、第三方网络请求（字体/广告/统计）、开源依赖与 IP 推断语言等合规信息。',
+    title: '隐私政策与说明｜本地处理 第三方请求 合规',
+    description:
+      '说明本站工具默认本地处理文件、不上传内容；披露字体 CDN、可选广告/统计、开源依赖及 IP 推断语言等第三方请求，便于隐私合规与搜索引擎理解站点性质。',
+    keywords: '隐私政策,隐私说明,本地处理,数据安全,第三方服务,Cookie,IP定位,开源许可,合规声明',
   },
   {
     path: '/tools/pdf-merge',
     outDir: ['tools', 'pdf-merge'],
-    title: 'PDF 合并｜在线本地合并多个 PDF',
-    description: '在浏览器本地按顺序合并多个 PDF，不上传服务器。支持拖拽排序与下载合并结果。',
+    title: 'PDF合并在线｜多个PDF合成一个 本地不上传',
+    description:
+      '免费在线 PDF 合并：在浏览器本地将多个 PDF 按顺序合成一个文件，支持拖拽与排序，不上传服务器；适合合同、论文、发票等批量合并场景。',
+    keywords: 'PDF合并,合并PDF,多个PDF合成,PDF拼接,在线合并,本地合并,不上传,pdf-lib,拖拽排序',
   },
   {
     path: '/tools/image-compress',
     outDir: ['tools', 'image-compress'],
-    title: '图片压缩｜在线本地压缩图片体积',
-    description: '在浏览器本地压缩常见图片格式，支持 Web Worker。适合减小附件体积与加快分享。',
+    title: '图片压缩在线｜JPG PNG 缩小体积 本地处理',
+    description:
+      '在线压缩 JPG、PNG、WebP 等常见图片，降低体积便于微信/邮件发送；压缩在浏览器本地完成，支持 Web Worker，默认不上传原图。',
+    keywords: '图片压缩,在线压缩,JPEG压缩,PNG压缩,webp,缩小图片,本地压缩,图片瘦身,附件变小',
   },
   {
     path: '/tools/pdf-to-word',
     outDir: ['tools', 'pdf-to-word'],
-    title: 'PDF 转 Word（.docx）｜抽取可编辑文本并尽量附带嵌入图',
+    title: 'PDF转Word在线｜可编辑docx 提取文字与嵌入图',
     description:
-      '在浏览器本地从 PDF 文本层生成可编辑 Word；并尝试从绘制指令抽取嵌入位图。复杂版式无法保证与 PDF 完全一致；扫描件可能几乎无字。',
+      '把 PDF 转成可编辑 Word（docx）：抽取文本层段落并尽量导出文档内嵌图；扫描件、JPX/JPEG2000 页面依赖本地 OpenJPEG 脚本。复杂排版与表格可能需人工微调，适合「PDF 转可编辑」搜索意图。',
+    keywords:
+      'PDF转Word,PDF转docx,在线PDF转Word,提取文字,可编辑Word,扫描件,JPX,JPEG2000,OpenJPEG,本地转换,pdf.js',
   },
   {
     path: '/tools/word-to-pdf',
     outDir: ['tools', 'word-to-pdf'],
-    title: 'Word 转 PDF（.docx）｜本地栅格化导出 PDF',
-    description: '将 .docx 转为可分享 PDF（栅格化方案）。更适合轻量文档；超长文档可能更耗时。',
+    title: 'Word转PDF在线｜docx转PDF 栅格化导出',
+    description:
+      '将 Word（docx）转为便于分享的 PDF：采用栅格化分页方案，类似打印为 PDF；适合轻量文档快速导出，复杂排版可能出现细微差异。',
+    keywords: 'Word转PDF,docx转PDF,在线Word转PDF,文档转PDF,打印为PDF,栅格化PDF,本地转换',
   },
   {
     path: '/tools/pdf-to-image',
     outDir: ['tools', 'pdf-to-image'],
-    title: 'PDF 转图片｜逐页导出 PNG/JPEG 并打包 ZIP',
+    title: 'PDF转图片在线｜逐页PNG JPEG 打包ZIP下载',
     description:
-      '在浏览器本地用 pdf.js 渲染每一页为位图，可选择 PNG 或 JPEG，并打包为 ZIP 下载。适合缩略图导出与分享；非可编辑文本方案。',
+      '将 PDF 每一页渲染为高分辨率 PNG 或 JPEG，并打包 ZIP 一键下载；适合预览图、归档截图、设计稿导出，与「图片转 PDF」可搭配使用。',
+    keywords: 'PDF转图片,PDF转PNG,PDF转JPG,PDF逐页导出,缩略图,ZIP,pdf.js,本地导出',
   },
   {
     path: '/tools/image-to-pdf',
     outDir: ['tools', 'image-to-pdf'],
-    title: '图片转 PDF｜多图按顺序合并为 PDF',
+    title: '图片转PDF在线｜多张照片合并为一个PDF',
     description:
-      '在浏览器本地将多张图片按列表顺序各生成一页 PDF（pdf-lib）。支持常见图片格式；可调整顺序后导出。',
+      '把多张 JPG、PNG 等图片按顺序合并为多页 PDF，每图一页；在本地用 pdf-lib 生成，可调整顺序，适合相册、报销票据、截图合集整理。',
+    keywords: '图片转PDF,JPG转PDF,PNG转PDF,多图合并PDF,照片PDF,相册PDF,pdf-lib,本地',
   },
 ]
 
@@ -88,7 +103,13 @@ function escapeAttr(value) {
   return String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;')
 }
 
-function applySeoToHtml(templateHtml, { title, description, canonicalUrl }) {
+function truncateSeo(text, max) {
+  const s = String(text)
+  if (s.length <= max) return s
+  return `${s.slice(0, max - 1)}…`
+}
+
+function applySeoToHtml(templateHtml, { title, description, keywords, canonicalUrl }) {
   let html = templateHtml
 
   html = html.replace(/<title>[\s\S]*?<\/title>/m, `<title>${escapeAttr(title)}</title>`)
@@ -109,13 +130,24 @@ function applySeoToHtml(templateHtml, { title, description, canonicalUrl }) {
     html = html.replace(singleLineDesc, `<meta name="description" content="${escapeAttr(description)}" />`)
   }
 
+  /** 避免与源模板 `index.html` 里已有 keywords 重复插入 */
+  html = html.replace(/<meta[^>]*\bname="keywords"[^>]*\/?>\s*/gi, '')
+
   const extraHead = []
+
+  if (keywords) {
+    extraHead.push(`    <meta name="keywords" content="${escapeAttr(keywords)}" />`)
+  }
+
+  extraHead.push(`    <meta name="twitter:card" content="summary" />`)
+  extraHead.push(`    <meta name="twitter:title" content="${escapeAttr(title)}" />`)
+  extraHead.push(`    <meta name="twitter:description" content="${escapeAttr(truncateSeo(description, 200))}" />`)
 
   if (canonicalUrl) {
     extraHead.push(`    <link rel="canonical" href="${escapeAttr(canonicalUrl)}" />`)
     extraHead.push(`    <meta property="og:type" content="website" />`)
     extraHead.push(`    <meta property="og:title" content="${escapeAttr(title)}" />`)
-    extraHead.push(`    <meta property="og:description" content="${escapeAttr(description)}" />`)
+    extraHead.push(`    <meta property="og:description" content="${escapeAttr(truncateSeo(description, 300))}" />`)
     extraHead.push(`    <meta property="og:url" content="${escapeAttr(canonicalUrl)}" />`)
   }
 
@@ -171,6 +203,7 @@ function main() {
     const html = applySeoToHtml(templateHtml, {
       title: page.title,
       description: page.description,
+      keywords: page.keywords,
       canonicalUrl,
     })
 

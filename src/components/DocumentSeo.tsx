@@ -16,7 +16,8 @@ export function DocumentSeo() {
   useEffect(() => {
     document.title = seo.title
     upsertMetaName('description', truncate(seo.description, 220))
-  }, [pathname, i18n.language, seo.title, seo.description])
+    upsertMetaName('keywords', truncate(seo.keywords, 512))
+  }, [pathname, i18n.language, seo.title, seo.description, seo.keywords])
 
   return null
 }
@@ -36,33 +37,69 @@ function upsertMetaName(name: string, content: string): void {
   el.setAttribute('content', content)
 }
 
-function buildRuntimeSeo(pathname: string, t: (key: string) => string): { title: string; description: string } {
+function buildRuntimeSeo(
+  pathname: string,
+  t: (key: string) => string,
+): { title: string; description: string; keywords: string } {
   const brand = t('brand.title')
+  const brandKw = t('brand.seoKeywords')
 
   if (pathname === '/') {
-    return { title: `${t('home.title')} · ${brand}`, description: t('home.subtitle') }
+    return {
+      title: `${t('home.title')} · ${brand}`,
+      description: t('home.subtitle'),
+      keywords: t('home.seoKeywords'),
+    }
   }
   if (pathname === '/privacy') {
-    return { title: `${t('privacy.title')} · ${brand}`, description: t('privacy.s1b') }
+    return {
+      title: `${t('privacy.title')} · ${brand}`,
+      description: t('privacy.s1b'),
+      keywords: t('privacy.seoKeywords'),
+    }
   }
   if (pathname === '/tools/pdf-merge') {
-    return { title: `${t('pdfMerge.title')} · ${brand}`, description: t('pdfMerge.desc') }
+    return {
+      title: `${t('pdfMerge.title')} · ${brand}`,
+      description: t('pdfMerge.desc'),
+      keywords: t('pdfMerge.seoKeywords'),
+    }
   }
   if (pathname === '/tools/image-compress') {
-    return { title: `${t('imageCompress.title')} · ${brand}`, description: t('imageCompress.desc') }
+    return {
+      title: `${t('imageCompress.title')} · ${brand}`,
+      description: t('imageCompress.desc'),
+      keywords: t('imageCompress.seoKeywords'),
+    }
   }
   if (pathname === '/tools/pdf-to-word') {
-    return { title: `${t('pdfToWord.title')} · ${brand}`, description: t('pdfToWord.desc') }
+    return {
+      title: `${t('pdfToWord.title')} · ${brand}`,
+      description: t('pdfToWord.desc'),
+      keywords: t('pdfToWord.seoKeywords'),
+    }
   }
   if (pathname === '/tools/word-to-pdf') {
-    return { title: `${t('wordToPdf.title')} · ${brand}`, description: t('wordToPdf.desc') }
+    return {
+      title: `${t('wordToPdf.title')} · ${brand}`,
+      description: t('wordToPdf.desc'),
+      keywords: t('wordToPdf.seoKeywords'),
+    }
   }
   if (pathname === '/tools/pdf-to-image') {
-    return { title: `${t('pdfToImage.title')} · ${brand}`, description: t('pdfToImage.desc') }
+    return {
+      title: `${t('pdfToImage.title')} · ${brand}`,
+      description: t('pdfToImage.desc'),
+      keywords: t('pdfToImage.seoKeywords'),
+    }
   }
   if (pathname === '/tools/image-to-pdf') {
-    return { title: `${t('imageToPdf.title')} · ${brand}`, description: t('imageToPdf.desc') }
+    return {
+      title: `${t('imageToPdf.title')} · ${brand}`,
+      description: t('imageToPdf.desc'),
+      keywords: t('imageToPdf.seoKeywords'),
+    }
   }
 
-  return { title: brand, description: t('home.subtitle') }
+  return { title: brand, description: t('home.subtitle'), keywords: brandKw }
 }

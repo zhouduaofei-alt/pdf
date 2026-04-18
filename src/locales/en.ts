@@ -8,6 +8,8 @@ export const en = {
   brand: {
     title: 'Privacy Media Suite',
     subtitle: 'Privacy-first media utilities',
+    seoKeywords:
+      'Privacy Media Suite,PDF tools,image tools,online PDF,local processing,privacy-first,no upload,free utilities',
   },
   nav: {
     home: 'Home',
@@ -36,6 +38,8 @@ export const en = {
     title: 'Process PDFs / images in your browser',
     subtitle:
       'By default, files are not uploaded to this site: processing happens in local memory—great as a starting point for a static site on Cloudflare Pages. If you add ads/analytics later, disclose third‑party requests in your privacy policy.',
+    seoKeywords:
+      'PDF tools,merge PDF,compress images,PDF to Word,Word to PDF,PDF to PNG,PDF to JPEG,images to PDF,JPG to PDF,local processing,privacy-first,browser tools,docx,Cloudflare Pages,free online',
     ctaPdfMerge: 'Start with PDF merge',
     ctaImage: 'Compress images',
     toolsTitle: 'Tools',
@@ -82,6 +86,7 @@ export const en = {
   },
   privacy: {
     title: 'Privacy notice',
+    seoKeywords: 'privacy policy,local processing,no upload,third-party requests,cookies,IP geolocation,open source,compliance',
     updated: 'Last updated: {{date}}',
     s1t: 'Local processing',
     s1b:
@@ -117,6 +122,7 @@ export const en = {
   },
   pdfMerge: {
     title: 'Merge PDFs',
+    seoKeywords: 'merge PDF,combine PDFs,join PDF files,PDF stitcher,local merge,no upload,pdf-lib,reorder pages',
     desc: 'Merge multiple PDFs in list order locally. Nothing is uploaded to your server (this demo has no upload API).',
     selectTitle: 'Choose files',
     selectHelp: 'Click to select or drag & drop. Reorder with Move up / Move down.',
@@ -134,6 +140,7 @@ export const en = {
   },
   imageCompress: {
     title: 'Compress images',
+    seoKeywords: 'compress images,image optimizer,JPEG compression,PNG compression,reduce file size,local compression,Web Worker',
     desc: 'Compress images locally to reduce size for sharing. No upload API in this demo—processing stays in your browser.',
     selectTitle: 'Choose an image',
     selectHelp: 'Common image formats (depends on browser decoding).',
@@ -155,6 +162,8 @@ export const en = {
   },
   pdfToWord: {
     title: 'PDF to Word',
+    seoKeywords:
+      'PDF to Word,PDF to docx,editable Word,extract text from PDF,text layer,scanned PDF,JPX,JPEG2000,OpenJPEG,local conversion',
     desc: 'Builds an editable .docx from the PDF text layer and tries to attach embedded bitmaps from paint operations—no full‑page screenshot. Scans/complex layouts vary widely.',
     selectTitle: 'Choose a PDF',
     selectHelp: 'Single file only; runs locally. Many embedded images increase time and memory use.',
@@ -171,6 +180,7 @@ export const en = {
   },
   pdfToImage: {
     title: 'PDF to images',
+    seoKeywords: 'PDF to PNG,PDF to JPEG,export PDF pages,rasterize PDF,PDF thumbnails,ZIP download,pdf.js,local export',
     desc: 'Rasterize each page to PNG or JPEG and download a ZIP locally. For editable text, use “PDF to Word”.',
     selectTitle: 'Choose a PDF',
     selectHelp: 'Single file; pick format and render scale. High scales / many pages use more memory.',
@@ -187,6 +197,7 @@ export const en = {
   },
   imageToPdf: {
     title: 'Images to PDF',
+    seoKeywords: 'images to PDF,JPG to PDF,PNG to PDF,multi-page PDF,photo album PDF,combine pictures,pdf-lib,local',
     desc: 'Combine multiple images into a multi‑page PDF (one image per page) using pdf-lib locally. Pairs with “PDF to images” (round‑trips lose vectors/text layers).',
     selectTitle: 'Choose images',
     selectHelp: 'Multi‑select supported; list order is page order (reorder with Move up/down).',
@@ -204,6 +215,7 @@ export const en = {
   },
   wordToPdf: {
     title: 'Word to PDF',
+    seoKeywords: 'Word to PDF,docx to PDF,convert Word document,rasterized PDF,print to PDF,local conversion',
     desc: 'Convert .docx to a shareable PDF. Current approach: HTML render → rasterize → paginated PDF—best for light docs; very long docs may be slower.',
     selectTitle: 'Choose Word (.docx)',
     selectHelp: 'Legacy .doc is not supported—Office Open XML .docx only.',

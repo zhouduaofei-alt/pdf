@@ -6,6 +6,9 @@ export const zh = {
   brand: {
     title: 'Privacy Media Suite',
     subtitle: '隐私优先的媒体小工具',
+    /** 未匹配到具体路由时的 meta keywords 兜底 */
+    seoKeywords:
+      'Privacy Media Suite,隐私媒体套件,PDF工具,图片工具,在线工具,浏览器本地处理,不上传服务器,免费工具',
   },
   nav: {
     home: '首页',
@@ -34,6 +37,8 @@ export const zh = {
     title: '在浏览器里完成 PDF / 图片处理',
     subtitle:
       '这套示例工程默认不把文件上传到服务器：你的数据留在本机内存中处理，适合作为 Cloudflare Pages 上的静态工具站起点。后续你可以按需接入广告网络，并在隐私政策中披露第三方请求。',
+    seoKeywords:
+      'PDF工具,图片工具,在线PDF,PDF合并,PDF转Word,Word转PDF,PDF转图片,图片转PDF,图片压缩,JPG压缩,PNG压缩,本地处理,隐私保护,不上传,免费在线,浏览器工具,docx,pdf.js,Cloudflare Pages',
     ctaPdfMerge: '从 PDF 合并开始',
     ctaImage: '图片压缩',
     toolsTitle: '工具',
@@ -68,6 +73,7 @@ export const zh = {
   },
   privacy: {
     title: '隐私说明',
+    seoKeywords: '隐私政策,隐私说明,本地处理,数据不上传,第三方请求,Cookie,IP定位,开源许可,合规',
     updated: '最后更新：{{date}}',
     s1t: '本地处理',
     s1b:
@@ -103,6 +109,7 @@ export const zh = {
   },
   pdfMerge: {
     title: 'PDF 合并',
+    seoKeywords: 'PDF合并,合并PDF,多个PDF合成一个,PDF拼接,在线合并PDF,本地合并,不上传,拖拽排序,pdf-lib',
     desc: '将多个 PDF 按列表顺序合并为一个文件。合并逻辑在浏览器本地执行：不会上传到你的服务器（本示例也未接入上传接口）。',
     selectTitle: '选择文件',
     selectHelp: '支持点击选择或拖放。合并顺序可通过「上移 / 下移」调整。',
@@ -120,6 +127,7 @@ export const zh = {
   },
   imageCompress: {
     title: '图片压缩',
+    seoKeywords: '图片压缩,在线压缩图片,JPEG压缩,PNG压缩,webp,缩小体积,本地压缩,图片瘦身,浏览器压缩',
     desc: '在本地压缩图片体积，适合用于减小附件大小或加快分享。默认不接入上传接口：压缩过程发生在你的浏览器中。',
     selectTitle: '选择图片',
     selectHelp: '支持常见图片格式（具体取决于浏览器解码能力）。',
@@ -140,6 +148,8 @@ export const zh = {
   },
   pdfToWord: {
     title: 'PDF 转 Word',
+    seoKeywords:
+      'PDF转Word,PDF转docx,在线PDF转Word,可编辑Word,提取PDF文字,PDF文本层,扫描件,JPX,JPEG2000,OpenJPEG,本地转换',
     desc: '从 PDF 文本层抽取可编辑段落（Word 中可直接改字），并尽量把文档内嵌位图单独插入；不使用整页 canvas 截图。复杂排版、表格与扫描件效果因文件而异。',
     selectTitle: '选择 PDF',
     selectHelp: '仅处理单个文件；转换在本地完成。页数多或嵌入图多时会更耗时、更占内存。',
@@ -154,6 +164,7 @@ export const zh = {
   },
   pdfToImage: {
     title: 'PDF 转图片',
+    seoKeywords: 'PDF转图片,PDF转PNG,PDF转JPG,PDF逐页导出,PDF截图,缩略图,ZIP打包,pdf.js渲染,本地导出',
     desc: '在本地将每一页渲染为位图（PNG 或 JPEG），并打包为 ZIP。适合分享整页预览；需要可编辑文字请使用「PDF 转 Word」。',
     selectTitle: '选择 PDF',
     selectHelp: '单文件；可调整输出格式与渲染倍率。页数多或倍率高时更占内存。',
@@ -170,6 +181,7 @@ export const zh = {
   },
   imageToPdf: {
     title: '图片转 PDF',
+    seoKeywords: '图片转PDF,JPG转PDF,PNG转PDF,多图合并PDF,照片转PDF,相册PDF,本地合成,pdf-lib',
     desc: '将多张图片按顺序各生成一页 PDF，在本地用 pdf-lib 合成。可与「PDF 转图片」配合做往返转换（但往返会损失矢量与文字层）。',
     selectTitle: '选择图片',
     selectHelp: '支持多选；顺序影响页序，可在列表中上移/下移。',
@@ -187,6 +199,7 @@ export const zh = {
   },
   wordToPdf: {
     title: 'Word 转 PDF',
+    seoKeywords: 'Word转PDF,docx转PDF,在线Word转PDF,文档转PDF,栅格化PDF,打印为PDF,本地转换',
     desc: '将 .docx 转为可分享的 PDF。当前实现为「HTML 渲染 → 栅格化 → 分页 PDF」，更适合轻量文档；超长文档可能更耗时。',
     selectTitle: '选择 Word（.docx）',
     selectHelp: '暂不支持老版本 .doc；仅支持 Office Open XML 的 .docx。',
