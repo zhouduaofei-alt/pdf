@@ -1,0 +1,47 @@
+@import 'tailwindcss';
+
+/**
+ * Tailwind v4：使用 `@theme` 扩展设计令牌（颜色、圆角、阴影、字体）。
+ * 这些变量会映射为工具类（如 `bg-surface`、`rounded-card`），便于全站统一「大气」视觉。
+ */
+@theme {
+  --font-sans: 'Noto Sans SC', ui-sans-serif, system-ui, sans-serif;
+
+  --color-surface-0: #f8fafc;
+  --color-surface-1: #ffffff;
+  --color-surface-2: #e2e8f0;
+  --color-ink-0: #0f172a;
+  --color-ink-1: #334155;
+  --color-ink-2: #64748b;
+  --color-accent: #4f46e5;
+  --color-accent-soft: #eef2ff;
+
+  --shadow-soft: 0 25px 50px -12px rgb(15 23 42 / 0.12);
+  --shadow-glow: 0 0 0 1px rgb(99 102 241 / 0.12), 0 20px 60px -24px rgb(79 70 229 / 0.35);
+
+  --radius-card: 1rem;
+  --radius-pill: 9999px;
+}
+
+/**
+ * 全局基础样式（非 Tailwind 工具类能覆盖的细节）：
+ * - `color-scheme`：让表单控件与滚动条在深浅色下更协调（当前以浅色为主）。
+ * - 抗锯齿：让中文与西文在 LCD 上更清晰。
+ */
+html {
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  background-color: var(--color-surface-0);
+  color: var(--color-ink-1);
+}
+
+#root {
+  min-height: 100dvh;
+}

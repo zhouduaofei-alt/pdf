@@ -1,0 +1,55 @@
+/** 한국어：以英文为底的增量覆盖（未覆盖字段回退英文）。 */
+export const koPatch = {
+  brand: { subtitle: '프라이버시 우선 미디어 도구' },
+  nav: {
+    home: '홈',
+    pdfMerge: 'PDF 병합',
+    imageCompress: '이미지 압축',
+    pdfToWord: 'PDF→Word',
+    wordToPdf: 'Word→PDF',
+    pdfToImage: 'PDF→이미지',
+    imageToPdf: '이미지→PDF',
+    privacy: '개인정보',
+  },
+  lang: {
+    label: '언어',
+    auto: '자동(IP)',
+    hint: '첫 방문 시 IP로 언어를 추정합니다. 실패하면 중국어로 돌아갑니다. 수동 선택은 로컬에 저장됩니다.',
+    zh: '중국어(간체)',
+    en: '영어',
+    ja: '일본어',
+    ko: '한국어',
+    de: '독일어',
+    fr: '프랑스어',
+    es: '스페인어',
+  },
+  home: {
+    badge: '프라이버시 우선 · 정적 호스팅 친화 · 반응형',
+    title: '브라우저에서 PDF / 이미지 처리',
+    subtitle:
+      '기본적으로 파일을 서버에 업로드하지 않습니다. 처리는 로컬 메모리에서 이루어지며 Cloudflare Pages 정적 사이트에 적합합니다. 광고/분석을 추가하면 개인정보 처리방침에 제3자 요청을 명시하세요.',
+    ctaPdfMerge: 'PDF 병합부터',
+    ctaImage: '이미지 압축',
+    toolsTitle: '도구',
+    toolsSubtitle: '같은 패턴으로 `/tools/*` 페이지를 계속 추가할 수 있습니다.',
+    enter: '열기',
+    tools: {
+      pdfMerge: { tag: 'PDF', title: 'PDF 병합', desc: '여러 PDF를 순서대로 병합합니다. 브라우저 내에서만 처리됩니다.' },
+      imageCompress: { tag: '이미지', title: '이미지 압축', desc: '일반 이미지 형식을 로컬에서 압축합니다(Web Worker 지원).' },
+      pdfToWord: {
+        tag: 'PDF',
+        title: 'PDF→Word',
+        desc: '텍스트 레이어를 편집 가능한 문단으로 추출하고 가능한 경우 내장 이미지를 첨부합니다(전 페이지 스크린샷 아님).',
+      },
+      wordToPdf: { tag: 'Word', title: 'Word→PDF', desc: '.docx를 PDF로 변환(래스터 방식).' },
+      pdfToImage: { tag: 'PDF', title: 'PDF→이미지', desc: '페이지별 PNG/JPEG를 ZIP으로 내려받기.「이미지→PDF」와 짝으로 사용.' },
+      imageToPdf: { tag: '이미지', title: '이미지→PDF', desc: '여러 이미지를 순서대로 한 페이지씩 PDF로.「PDF→이미지」와 짝으로 사용.' },
+    },
+  },
+  footer: {
+    textBefore: '기본적으로 파일은 로컬에서 처리되며 업로드를 저장하지 않습니다. 광고/분석을 추가하면',
+    privacyLink: '개인정보 안내',
+    textAfter: '를 확인하세요.',
+  },
+  routeFallback: { loading: '로딩 중…' },
+} as const

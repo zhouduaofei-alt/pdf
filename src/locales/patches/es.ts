@@ -1,0 +1,55 @@
+/** Español: overrides incrementales basados en `en`. */
+export const esPatch = {
+  brand: { subtitle: 'Herramientas multimedia con privacidad primero' },
+  nav: {
+    home: 'Inicio',
+    pdfMerge: 'Unir PDF',
+    imageCompress: 'Comprimir imágenes',
+    pdfToWord: 'PDF a Word',
+    wordToPdf: 'Word a PDF',
+    pdfToImage: 'PDF a imágenes',
+    imageToPdf: 'Imágenes a PDF',
+    privacy: 'Privacidad',
+  },
+  lang: {
+    label: 'Idioma',
+    auto: 'Auto (IP)',
+    hint: 'En la primera visita intentamos inferir el idioma por IP. Si falla, volvemos al chino. La selección manual se guarda en local.',
+    zh: 'Chino (simplificado)',
+    en: 'Inglés',
+    ja: 'Japonés',
+    ko: 'Coreano',
+    de: 'Alemán',
+    fr: 'Francés',
+    es: 'Español',
+  },
+  home: {
+    badge: 'Privacidad primero · hosting estático · responsive',
+    title: 'Procesa PDF / imágenes en el navegador',
+    subtitle:
+      'Por defecto no subimos archivos: el procesamiento ocurre en memoria local—ideal para un sitio estático en Cloudflare Pages. Si añades anuncios/analítica, declara terceros en la política de privacidad.',
+    ctaPdfMerge: 'Empezar uniendo PDF',
+    ctaImage: 'Comprimir imágenes',
+    toolsTitle: 'Herramientas',
+    toolsSubtitle: 'Puedes seguir añadiendo páginas `/tools/*` con el mismo patrón.',
+    enter: 'Abrir',
+    tools: {
+      pdfMerge: { tag: 'PDF', title: 'Unir PDF', desc: 'Une varios PDF en orden. Solo en el navegador.' },
+      imageCompress: { tag: 'Imagen', title: 'Comprimir imágenes', desc: 'Comprime formatos comunes localmente (Web Worker).' },
+      pdfToWord: {
+        tag: 'PDF',
+        title: 'PDF a Word',
+        desc: 'Texto editable e imágenes incrustadas si es posible—no es una captura de página completa.',
+      },
+      wordToPdf: { tag: 'Word', title: 'Word a PDF', desc: 'Convierte .docx a PDF (rasterizado).' },
+      pdfToImage: { tag: 'PDF', title: 'PDF a imágenes', desc: 'Cada página a PNG/JPEG en un ZIP. Complemento de « Imágenes a PDF ».' },
+      imageToPdf: { tag: 'Imagen', title: 'Imágenes a PDF', desc: 'Varias imágenes en orden a un PDF multipágina.' },
+    },
+  },
+  footer: {
+    textBefore: 'Por defecto el procesamiento es local; no guardamos subidas. Si añades anuncios/analítica, lee la',
+    privacyLink: 'información de privacidad',
+    textAfter: '.',
+  },
+  routeFallback: { loading: 'Cargando…' },
+} as const

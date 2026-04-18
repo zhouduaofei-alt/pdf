@@ -1,0 +1,55 @@
+/** Deutsch: inkrementelle Overrides auf Basis von `en`. */
+export const dePatch = {
+  brand: { subtitle: 'Datenschutz‑orientierte Medien‑Tools' },
+  nav: {
+    home: 'Start',
+    pdfMerge: 'PDFs zusammenführen',
+    imageCompress: 'Bilder komprimieren',
+    pdfToWord: 'PDF zu Word',
+    wordToPdf: 'Word zu PDF',
+    pdfToImage: 'PDF zu Bildern',
+    imageToPdf: 'Bilder zu PDF',
+    privacy: 'Datenschutz',
+  },
+  lang: {
+    label: 'Sprache',
+    auto: 'Automatisch (IP)',
+    hint: 'Beim ersten Besuch wird die Sprache per IP geschätzt. Bei Fehler: Fallback Chinesisch. Manuelle Auswahl wird lokal gespeichert.',
+    zh: 'Chinesisch (vereinfacht)',
+    en: 'Englisch',
+    ja: 'Japanisch',
+    ko: 'Koreanisch',
+    de: 'Deutsch',
+    fr: 'Französisch',
+    es: 'Spanisch',
+  },
+  home: {
+    badge: 'Privacy‑first · statisches Hosting · responsive',
+    title: 'PDFs / Bilder im Browser verarbeiten',
+    subtitle:
+      'Standardmäßig kein Upload: Verarbeitung im lokalen Speicher—gut für statische Sites auf Cloudflare Pages. Bei Ads/Analytics Drittanbieter in der Datenschutzerklärung nennen.',
+    ctaPdfMerge: 'Mit PDF‑Merge starten',
+    ctaImage: 'Bilder komprimieren',
+    toolsTitle: 'Tools',
+    toolsSubtitle: 'Weitere `/tools/*` Seiten können nach demselben Muster ergänzt werden.',
+    enter: 'Öffnen',
+    tools: {
+      pdfMerge: { tag: 'PDF', title: 'PDFs zusammenführen', desc: 'Mehrere PDFs in Reihenfolge verbinden—nur im Browser.' },
+      imageCompress: { tag: 'Bild', title: 'Bilder komprimieren', desc: 'Gängige Bildformate lokal komprimieren (Web Worker).' },
+      pdfToWord: {
+        tag: 'PDF',
+        title: 'PDF zu Word',
+        desc: 'Bearbeitbaren Text extrahieren und eingebettete Bilder nach Möglichkeit anhängen—kein ganzer Seiten‑Screenshot.',
+      },
+      wordToPdf: { tag: 'Word', title: 'Word zu PDF', desc: '.docx zu PDF (rasterisiert).' },
+      pdfToImage: { tag: 'PDF', title: 'PDF zu Bildern', desc: 'Jede Seite als PNG/JPEG in einer ZIP‑Datei. Passt zu „Bilder zu PDF“.' },
+      imageToPdf: { tag: 'Bild', title: 'Bilder zu PDF', desc: 'Mehrere Bilder in Reihenfolge als PDF‑Seiten. Passt zu „PDF zu Bildern“.' },
+    },
+  },
+  footer: {
+    textBefore: 'Standardmäßig lokale Verarbeitung; keine Speicherung von Uploads. Bei Ads/Analytics bitte die',
+    privacyLink: 'Datenschutzhinweise',
+    textAfter: ' lesen.',
+  },
+  routeFallback: { loading: 'Laden…' },
+} as const

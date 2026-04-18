@@ -1,0 +1,3 @@
+# Cloudflare Pages：单页应用（SPA）路由回退
+# 所有未命中静态文件的路径都返回 index.html，由 React Router 在浏览器端解析。
+/*    /index.html   200

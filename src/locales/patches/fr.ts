@@ -1,0 +1,55 @@
+/** Français : overrides incrémentaux basés sur `en`. */
+export const frPatch = {
+  brand: { subtitle: 'Outils média axés confidentialité' },
+  nav: {
+    home: 'Accueil',
+    pdfMerge: 'Fusionner PDF',
+    imageCompress: 'Compresser images',
+    pdfToWord: 'PDF vers Word',
+    wordToPdf: 'Word vers PDF',
+    pdfToImage: 'PDF vers images',
+    imageToPdf: 'Images vers PDF',
+    privacy: 'Confidentialité',
+  },
+  lang: {
+    label: 'Langue',
+    auto: 'Auto (IP)',
+    hint: 'Au premier accès, la langue est estimée via l’IP. En cas d’échec, retour au chinois. Le choix manuel est enregistré localement.',
+    zh: 'Chinois (simplifié)',
+    en: 'Anglais',
+    ja: 'Japonais',
+    ko: 'Coréen',
+    de: 'Allemand',
+    fr: 'Français',
+    es: 'Espagnol',
+  },
+  home: {
+    badge: 'Confidentialité · site statique · responsive',
+    title: 'Traiter PDF / images dans le navigateur',
+    subtitle:
+      'Par défaut, pas d’upload : traitement en mémoire locale—idéal pour un site statique sur Cloudflare Pages. Si vous ajoutez pub/analytics, déclarez les tiers dans la politique de confidentialité.',
+    ctaPdfMerge: 'Commencer par fusion PDF',
+    ctaImage: 'Compresser des images',
+    toolsTitle: 'Outils',
+    toolsSubtitle: 'Ajoutez d’autres pages `/tools/*` avec le même modèle.',
+    enter: 'Ouvrir',
+    tools: {
+      pdfMerge: { tag: 'PDF', title: 'Fusionner PDF', desc: 'Fusionner plusieurs PDF dans l’ordre—uniquement dans le navigateur.' },
+      imageCompress: { tag: 'Image', title: 'Compresser images', desc: 'Compresser localement (Web Worker).' },
+      pdfToWord: {
+        tag: 'PDF',
+        title: 'PDF vers Word',
+        desc: 'Texte éditable + images intégrées si possible—pas une capture pleine page.',
+      },
+      wordToPdf: { tag: 'Word', title: 'Word vers PDF', desc: 'Convertir .docx en PDF (raster).' },
+      pdfToImage: { tag: 'PDF', title: 'PDF vers images', desc: 'Chaque page en PNG/JPEG dans un ZIP. Va avec « Images vers PDF ».' },
+      imageToPdf: { tag: 'Image', title: 'Images vers PDF', desc: 'Plusieurs images → PDF multipage. Va avec « PDF vers images ».' },
+    },
+  },
+  footer: {
+    textBefore: 'Par défaut, traitement local ; pas de stockage des fichiers. Si vous ajoutez pub/analytics, lisez les',
+    privacyLink: 'infos confidentialité',
+    textAfter: '.',
+  },
+  routeFallback: { loading: 'Chargement…' },
+} as const
