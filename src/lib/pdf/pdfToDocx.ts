@@ -1,4 +1,4 @@
-import { AlignmentType, Document, ImageRun, Packer, Paragraph, TextRun } from 'docx'
+import { AlignmentType, Document, ImageRun, LineRuleType, Packer, Paragraph, TextRun } from 'docx'
 import { ImageKind, OPS, Util } from 'pdfjs-dist'
 import type { PDFDocumentProxy, PDFPageProxy } from 'pdfjs-dist'
 import { buildPdfjsDocumentParams, ensurePdfjsWorkerReady, pdfjs } from './pdfjsWorker'
@@ -12,6 +12,13 @@ const BODY_FONT = {
   ascii: 'Calibri',
   eastAsia: 'Microsoft YaHei',
   hAnsi: 'Calibri',
+} as const
+
+/** 正文行距（约 1.15 倍）与段后间距，便于与 PDF 阅读顺序观感接近 */
+const BODY_PARA_SPACING = {
+  after: 56,
+  line: 276,
+  lineRule: LineRuleType.AUTO,
 } as const
 
 /**
@@ -62,19 +69,8 @@ export async function convertPdfFileToDocxBlob(file: File): Promise<Blob> {
 
     if (textParas.length > 0) {
       children.push(...textParas)
+      /** 嵌入图附在当页正文之后，不插入说明性段落（避免与正文混淆） */
       if (imageParas.length > 0) {
-        children.push(
-          new Paragraph({
-            spacing: { before: 200, after: 80 },
-            children: [
-              new TextRun({
-                text: '以下为从本页绘制指令中抽取的嵌入图像（顺序大致为绘制顺序；不保证与原文完全重叠）。',
-                italics: true,
-                font: { ...BODY_FONT },
-              }),
-            ],
-          }),
-        )
         children.push(...imageParas)
       }
     } else {
@@ -222,7 +218,11 @@ function paragraphsFromTextContent(textContent: PageTextContent, viewport: { tra
 
   if (frags.length === 0) return []
 
-  frags.sort((a, b) => (Math.abs(b.y - a.y) < 1e-4 ? a.x - b.x : b.y - a.y))
+  /**
+   * 阅读顺序：画布坐标系中 **y 向下增大**，页面上方文字 y 更小。
+   * 必须先按 **y 升序**（自上而下），否则会整页段落颠倒。
+   */
+  frags.sort((a, b) => (Math.abs(a.y - b.y) < 1e-4 ? a.x - b.x : a.y - b.y))
 
   const lines: Frag[][] = []
   let cur: Frag[] = []
@@ -259,7 +259,7 @@ function paragraphsFromTextContent(textContent: PageTextContent, viewport: { tra
     paras.push(
       new Paragraph({
         children: [new TextRun({ text: merged, font: { ...BODY_FONT } })],
-        spacing: { after: 60 },
+        spacing: { ...BODY_PARA_SPACING },
       }),
     )
   }
