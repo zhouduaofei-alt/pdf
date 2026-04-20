@@ -243,6 +243,48 @@ sudo systemctl reload nginx
 
 ---
 
+## 七点五、推荐流程：Windows 推送到 GitHub → 服务器同步部署
+
+适用场景：你在 **Windows** 开发机修改代码，希望通过 **GitHub** 作为中转，让服务器稳定拉取并部署（最常用、最省事）。
+
+### 7.5.1 Windows：提交并推送到 GitHub
+
+在 **PowerShell** 中执行（目录以你的工作区为准）：
+
+```powershell
+cd D:\Go\GG\PDF
+git status -sb
+git add -A
+git commit -m "更新：XXX"
+git push
+```
+
+说明：
+
+- `git commit -m "更新：XXX"` 里的 `XXX` 请改为本次修改点。
+- 若提示 `nothing to commit`：说明没有变更，不需要提交。
+- 若提示登录：HTTPS 模式会要求 GitHub Token（不是账号密码）。
+
+### 7.5.2 Linux 服务器：拉取更新并构建发布
+
+SSH 登录到服务器后执行：
+
+```bash
+cd /var/www/pdf
+git pull origin main
+export SITE_URL="https://pdf.qqqtttt.com"
+npm ci
+npm run build
+sudo systemctl reload nginx
+```
+
+说明：
+
+- `SITE_URL` 用于生成 canonical / sitemap（可选但推荐）。
+- 服务器目录如果不是 `/var/www/pdf`，把 `cd` 路径改成你的真实路径。
+
+---
+
 ## 八、常见问题
 
 | 现象 | 处理 |
